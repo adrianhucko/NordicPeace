@@ -19,6 +19,7 @@ defineProps({
     <MainLayout>
         <template #content>
             <UpCenter></UpCenter>
+
             <div class="mt-12">
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
                     <UpdateProfileInformationForm :user="$page.props.auth.user" />
@@ -29,6 +30,22 @@ defineProps({
                     <UpdatePasswordForm/>
                     <SectionBorder />
                 </div>
+
+                <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
+                    <TwoFactorAuthenticationForm
+                        :requires-confirmation="confirmsTwoFactorAuthentication"
+                        class="mt-10 sm:mt-0"
+                    />
+                    <SectionBorder />
+                </div>
+
+                <LogoutOtherBrowserSessionsForm :sessions="sessions" class="mt-10 sm:mt-0" />
+                
+                <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
+                    <SectionBorder />
+
+                    <DeleteUserForm class="mt-10 sm:mt-0" />
+                </template>
             </div>
         </template>
     </MainLayout>
@@ -37,7 +54,7 @@ defineProps({
 
 
 
-
+<!-- 
     <AppLayout title="Profile">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -77,5 +94,5 @@ defineProps({
                 </template>
             </div>
         </div>
-    </AppLayout>
+    </AppLayout> -->
 </template>

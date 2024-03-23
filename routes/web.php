@@ -33,7 +33,7 @@ Route::get('/home', function () {            //home page
 
 Route::get('/profile', function () {         //profile page
     return Inertia::render('Profile');
-});
+})->name('profile');
 
 Route::get('/settings', function() {        //working
     return Inertia::render('Settings');

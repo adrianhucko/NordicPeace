@@ -50,6 +50,11 @@ export default {
           dropShadow: {
             'sharpS': '2px 2px 1px rgba(0, 0, 0, 0.25)',
           },
+          strokeWidth: {
+            '1.5': '1.5px',
+            '2': '2px',
+            '2.5': '2.5px'
+          },
         },
       },
 

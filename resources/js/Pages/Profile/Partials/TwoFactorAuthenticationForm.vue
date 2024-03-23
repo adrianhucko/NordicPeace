@@ -105,15 +105,11 @@ const disableTwoFactorAuthentication = () => {
 </script>
 
 <template>
+
+    <div class="font-rem text-lg m-2">
+        <h1>Two factor authentication</h1>
+    </div>
     <ActionSection>
-        <template #title>
-            Two Factor Authentication
-        </template>
-
-        <template #description>
-            Add additional security to your account using two factor authentication.
-        </template>
-
         <template #content>
             <h3 v-if="twoFactorEnabled && ! confirming" class="text-lg font-medium text-gray-900">
                 You have enabled two factor authentication.
@@ -145,7 +141,7 @@ const disableTwoFactorAuthentication = () => {
                         </p>
                     </div>
 
-                    <div class="mt-4 p-2 inline-block bg-white" v-html="qrCode" />
+                    <div class="mt-4 p-2 bg-white" v-html="qrCode" />
 
                     <div v-if="setupKey" class="mt-4 max-w-xl text-sm text-gray-600">
                         <p class="font-semibold">
@@ -196,15 +192,18 @@ const disableTwoFactorAuthentication = () => {
                     </ConfirmsPassword>
                 </div>
 
-                <div v-else>
+                <div v-else class="flex">
                     <ConfirmsPassword @confirmed="confirmTwoFactorAuthentication">
                         <PrimaryButton
-                            v-if="confirming"
+                            v-if="confirming"               
                             type="button"
-                            class="mr-3"
                             :class="{ 'opacity-25': enabling }"
                             :disabled="enabling"
+                            class="group flex mr-3 pr-4 text-zinc-700"
                         >
+                            <svg class="w-6 mr-0.5 stroke-zinc-700 group-hover:stroke-white transition duration-100 ease-in-out" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 14L8.23309 16.4248C8.66178 16.7463 9.26772 16.6728 9.60705 16.2581L18 6" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
                             Confirm
                         </PrimaryButton>
                     </ConfirmsPassword>
@@ -212,19 +211,19 @@ const disableTwoFactorAuthentication = () => {
                     <ConfirmsPassword @confirmed="regenerateRecoveryCodes">
                         <SecondaryButton
                             v-if="recoveryCodes.length > 0 && ! confirming"
-                            class="mr-3"
+                            class="mr-3 hover:bg-teal-500"
                         >
                             Regenerate Recovery Codes
                         </SecondaryButton>
                     </ConfirmsPassword>
 
                     <ConfirmsPassword @confirmed="showRecoveryCodes">
-                        <SecondaryButton
+                        <PrimaryButton
                             v-if="recoveryCodes.length === 0 && ! confirming"
                             class="mr-3"
                         >
                             Show Recovery Codes
-                        </SecondaryButton>
+                        </PrimaryButton>
                     </ConfirmsPassword>
 
                     <ConfirmsPassword @confirmed="disableTwoFactorAuthentication">
@@ -232,19 +231,25 @@ const disableTwoFactorAuthentication = () => {
                             v-if="confirming"
                             :class="{ 'opacity-25': disabling }"
                             :disabled="disabling"
-                        >
+                            class="flex mr-3 pr-4"
+                        >   
+                            <svg class="w-6 mr-1 stroke-zinc-700 group-hover:stroke-white transition duration-100 ease-in-out" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L6 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6 6L18 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                             Cancel
                         </SecondaryButton>
                     </ConfirmsPassword>
 
                     <ConfirmsPassword @confirmed="disableTwoFactorAuthentication">
-                        <DangerButton
+                        <SecondaryButton
                             v-if="! confirming"
                             :class="{ 'opacity-25': disabling }"
                             :disabled="disabling"
+                            class=""
                         >
                             Disable
-                        </DangerButton>
+                        </SecondaryButton>
                     </ConfirmsPassword>
                 </div>
             </div>
