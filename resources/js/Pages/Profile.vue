@@ -18,7 +18,7 @@ import PostPhoto from '@/Components/PostPhoto.vue';
                         </div>
                         
                         <div class="">
-                            kokotinka
+                            
                         </div>
 
                         <div>
