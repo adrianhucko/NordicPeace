@@ -27,9 +27,9 @@
         <PostDescription :post="props.post"></PostDescription>
         <PostLikes></PostLikes>
         <PostButtons></PostButtons>
-        
+
         <!-- Comments -->
-        <CommentSection :comments="props.post.comments"></CommentSection>
+        <CommentSection :post="props.post" :comments="props.post.comments"></CommentSection>
     </div>
 
 </template>

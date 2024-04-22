@@ -10,7 +10,7 @@
 
 <template>
     <!-- {{ props.comment }} -->
-    <CommentPhoto :photo="comment"></CommentPhoto>
+    <CommentPhoto :comment="props.comment"></CommentPhoto>
     <div class="flex w-full justify-between font-rem mt-4 ml-4">
         <div class="flex justify-start -mt-1.5">
             <a class="mr-1.5 text-neutral-800 text-base" href="#">{{ props.comment.user.name }}</a>
@@ -22,7 +22,7 @@
 
         <CommentLike></CommentLike>
 
-        
+
 
     </div>
 </template>

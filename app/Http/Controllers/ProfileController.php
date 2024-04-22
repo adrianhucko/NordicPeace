@@ -24,6 +24,7 @@ class ProfileController extends Controller
         }
 
         return Inertia::render('Profile', [
+            'user' => $user,
             'posts' => $posts
         ]);
     }

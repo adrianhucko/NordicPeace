@@ -3,6 +3,7 @@
     import CommentInput from '@/Components/CommentInput.vue';
 
     const props = defineProps({
+        post: Object,
         comments: Array
     })
 
@@ -10,7 +11,7 @@
 
 <template>
     <div class="bg-zinc-300 rounded-b-bo">
-        <CommentInput></CommentInput>
+        <CommentInput :post="props.post"></CommentInput>
         <div class="mt-9 mb-6 mx-6 bg-neutral-50 rounded-bo">
             <template v-for="comment in props.comments">
                 <Comment :comment="comment"></Comment>

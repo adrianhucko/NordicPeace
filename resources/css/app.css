@@ -1,7 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=REM:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=REM:wght@100;200;300;400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 [x-cloak] {
     display: none;
 }
+@layer components {
+
+    .btn {
+        @apply items-center shadow rounded-full bg-neutral-50 hover:bg-teal-500 transition duration-200 ease-in-out;
+    }
+    .str-hvr {
+        @apply stroke-zinc-700 group-hover:stroke-neutral-50 transition duration-200 ease-in-out;
+    }
+    .fill-hvr {
+        @apply fill-zinc-700 group-hover:fill-neutral-50 transition duration-200 ease-in-out;
+    }
+    .likeSvg {
+        @apply w-6.5 h-6.5 fill-neutral-50 group-hover:fill-teal-500 group-focus:fill-red-500;
+    }
+    .likeStr-hvr {
+        @apply stroke-zinc-700 group-hover:stroke-neutral-50 group-focus:stroke-red-500 transition duration-200 ease-in-out;
+    }
+
+    .sProfileBg {
+        @apply flex relative bg-neutral-50 hover:bg-zinc-200 transition duration-200 rounded-full items-center;
+    }
+    .sProfilePhoto {
+        @apply w-10 h-10 rounded-full overflow-hidden bg-center m-2;
+    }
+
+    .followButton {
+        @apply flex absolute right-0 items-center bg-neutral-800 rounded-full py-1.5 px-2 mr-4 text-neutral-50 text-xs font-rem;
+    }
+    .optionsButton {
+        @apply flex justify-center items-center rounded-full w-9 h-9 hover:bg-neutral-200 transition duration-200 ease-in-out;
+    }
+    .likeBtn {
+        @apply border p-[11px] btn mr-6 hover:border-teal-500;
+    }
+    .commentBtn {
+        @apply border p-2.5 btn mr-6 hover:border-teal-500;
+    }
+    .shareButton {
+        @apply border btn py-1.5 px-[9px] hover:border-teal-500;
+    }
+    .replyButton {
+        @apply px-1.5 rounded-full text-neutral-800 mt-1 mb-1.5 -ml-1.5 hover:bg-neutral-200 transition duration-200 ease-in-out;
+    }
+
+    .postPhoto {
+        @apply w-75 h-96 rounded-bo drop-shadow-sharpS mr-2.5 snap-always snap-center;
+    }
+    .comPhoto {
+        @apply w-full h-full object-cover rounded-full outline outline-4 outline-stone-300;
+    }
+
+    .comLikeBtn {
+        @apply flex relative rounded-full p-1 mr-2 hover:bg-neutral-200 transition duration-200 ease-in-out;
+    }
+    .comLikeSvg {
+        @apply w-5 h-5 fill-neutral-50 stroke-neutral-600 group-hover:fill-neutral-200 group-focus:fill-red-500 group-focus:stroke-none transition-all duration-200;
+    }
+}
+

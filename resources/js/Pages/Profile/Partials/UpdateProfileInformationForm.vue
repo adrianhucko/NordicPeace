@@ -83,6 +83,7 @@ const clearPhotoFileInput = () => {
 
             <template #form>
                 <!-- Profile Photo -->
+                <a href="https://wordpress.com/log-in/link?client_id=1854&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D68ffbdb6131c8380bcbe2aa5c816edcf4f4c03948dc856c99c4f208690705ee1%26redirect_uri%3Dhttps%253A%252F%252Fgravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token%26from-calypso%3D1">Change your profile photo here</a>
                 <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
                     <!-- Profile Photo File Input -->
                     <input

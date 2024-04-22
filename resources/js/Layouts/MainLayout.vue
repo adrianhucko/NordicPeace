@@ -24,8 +24,8 @@ const props = defineProps({
                 <ProfileButton :class="{
                     'font-medium': $page.url.startsWith('/profile')}"
                 />
-                        
-                <NavButton href="/home" :active="$page.component == 'Home'">
+
+                <NavButton href="/" :active="$page.component == 'Home'">
                     <template #icon>
                         <svg class="w-8 -ml-1 stroke-zinc-700 group-hover:stroke-neutral-50 transition duration-100 ease-in-out" :class="{'stroke-2': $page.component == 'Home', 'stroke-1.5': $page.component !== 'Home'}"
                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +38,7 @@ const props = defineProps({
 
                 <NavButton href="/saved" :active="$page.component == 'Saved'">
                     <template #icon>
-                        <svg class="w-7 -ml-1 stroke-zinc-700 group-hover:stroke-neutral-50 transition duration-100 ease-in-out" 
+                        <svg class="w-7 -ml-1 stroke-zinc-700 group-hover:stroke-neutral-50 transition duration-100 ease-in-out"
                         :class="{'stroke-2.5': $page.component == 'Saved', 'stroke-2': $page.component !== 'Saved'}"
                         viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g id="Bookmark">
@@ -48,7 +48,7 @@ const props = defineProps({
                     </template>
                     Saved
                 </NavButton>
-                
+
             </div>
         </div>
 

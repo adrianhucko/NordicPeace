@@ -29,6 +29,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $appends = [
+        'avatar'
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -50,12 +54,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+
+    public function GetAvatarAttribute()
+    {
+        return 'https://www.gravatar.com/avatar/'.md5($this->email).'?d=mp';
+    }
 }
