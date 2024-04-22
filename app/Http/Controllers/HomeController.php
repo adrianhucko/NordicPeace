@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Post;
@@ -6,11 +7,12 @@ use App\Models\User;
 use Inertia\Inertia;
 use Carbon\Carbon;
 
-class ProfileController extends Controller
+class HomeController extends Controller
 {
-    public function __invoke(User $user) {
+    public function __invoke(User $user)
+    {
         $posts = Post::query()
-            ->where('user_id', $user->id)     //following users just..
+            ->where('user_id', $user->id)
             ->orderBy('created_at', 'desc')
             ->with(['photos', 'user', 'comments.user'])
             ->get();

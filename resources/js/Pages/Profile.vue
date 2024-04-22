@@ -2,6 +2,12 @@
 import MainLayout from '@/Layouts/MainLayout.vue';
 import UpCenter from '@/Components/UpCenter.vue';
 import PostPhoto from '@/Components/PostPhoto.vue';
+import PostStatus from '@/Components/PostStatus.vue';
+
+const props  = defineProps({
+    'posts': Array,
+});
+
 </script>
 
 <template>
@@ -33,7 +39,16 @@ import PostPhoto from '@/Components/PostPhoto.vue';
 
                     <!-- Profile timeline -->
                     <div>
-                        <PostPhoto></PostPhoto>
+                        <div v-for="post in props.posts">
+                            <template v-if="post.photos.length > 0">
+                                <PostPhoto :post="post" />
+                            </template>
+
+                            <template v-else>
+                                <PostStatus :post="post" />
+                            </template>
+
+                        </div>
                     </div>
                 </div>
             </template>

@@ -1,5 +1,9 @@
 <script setup>
     import PostOptions from '@/Components/PostOptions.vue'
+
+    const props = defineProps({
+        post: Object
+    })
 </script>
 
 <template>
@@ -10,9 +14,9 @@
         <div class="flex justify-between w-full mr-12">
             <div class="NameTime font-rem ml-2.5">
                 <a href="#">
-                    <p class="text-lg text-black">Adrián Hučko</p>
+                    <p class="text-lg text-black">{{ props.post.user.name }}</p>
                 </a>
-                <div class="text-xs text-neutral-500">10 minutes ago</div>
+                <div class="text-xs text-neutral-500">{{ props.post.created_at_for_humans }}</div>
             </div>
             <PostOptions></PostOptions>
         </div>
