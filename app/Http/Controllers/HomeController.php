@@ -26,6 +26,7 @@ class HomeController extends Controller
                 $comment->created_at_for_humans = Carbon::parse($comment->created_at)->diffForHumans();
             }
         }
+        
 
         return Inertia::render('Home', [
             'posts' => $posts,

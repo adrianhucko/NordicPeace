@@ -14,7 +14,7 @@ import AddPhotoButton from '@/Components/AddPhotoButton.vue'
             <div class="flex items-center justify-end">
                 <AddPhotoButton class="mr-[1px] -mb-[8px]"></AddPhotoButton>
                 <h1 class="mr mb-[2px] font-rem font-normal text-neutral-200 text-xl">|</h1>
-                <PostUploadButton class="ml-[1px]"></PostUploadButton>
+                <PostUploadButton class="ml-[1px]">Add post</PostUploadButton>
             </div>
         </form>
 

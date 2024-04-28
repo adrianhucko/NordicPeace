@@ -9,6 +9,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
+
 const props = defineProps({
     user: Object,
 });
@@ -17,6 +18,7 @@ const form = useForm({
     _method: 'PUT',
     name: props.user.name,
     email: props.user.email,
+    bio: props.user.bio,
     photo: null,
 });
 
@@ -143,7 +145,7 @@ const clearPhotoFileInput = () => {
                 id="email"
                 v-model="form.email"
                 type="email"
-                class="mt-1 mb-10 block w-full"
+                class="mt-1 mb-14 block w-full"
                 required
                 autocomplete="username"
                 />
@@ -167,16 +169,26 @@ const clearPhotoFileInput = () => {
                     A new verification link has been sent to your email address.
                 </div>
             </div>
+            
+            <InputLabel for="bio" value="Bio" class="-mb-0.5 -mt-6" />
+            <textarea
+            id="bio"
+            v-model="form.bio"
+            type="text"
+            required
+            class="w-full resize-none scrollbar-hide p-2 mb-2 mt-2 rounded-bo bg-neutral-100 font-Man font-medium text-neutral-700 outline-none" rows="5"
+            />
         </div>
-
+            
         <!-- Profile Photo Edit -->
-        <a class="flex items-center justify-between bg-teal-500 text-white shadow font-rem font-medium py-2 px-3 rounded-bo-sm hover:bg-teal-600 transition duration-100 ease-in-out" href="https://wordpress.com/log-in/link?client_id=1854&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D68ffbdb6131c8380bcbe2aa5c816edcf4f4c03948dc856c99c4f208690705ee1%26redirect_uri%3Dhttps%253A%252F%252Fgravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token%26from-calypso%3D1">
-            Change your profile photo here
-            <svg class="w-7 stroke-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a class="flex w-fit items-center justify-between py-2 px-3 mt-6 bg-teal-500 text-white shadow font-rem font-medium rounded-bo-sm hover:bg-teal-600 transition duration-100 ease-in-out" href="https://wordpress.com/log-in/link?client_id=1854&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D68ffbdb6131c8380bcbe2aa5c816edcf4f4c03948dc856c99c4f208690705ee1%26redirect_uri%3Dhttps%253A%252F%252Fgravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token%26from-calypso%3D1">
+            Change profile photo
+            <svg class="w-7 stroke-white ml-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.7274 20.4471C19.2716 19.1713 18.2672 18.0439 16.8701 17.2399C15.4729 16.4358 13.7611 16 12 16C10.2389 16 8.52706 16.4358 7.12991 17.2399C5.73276 18.0439 4.72839 19.1713 4.27259 20.4471" stroke-width="2" stroke-linecap="round"/>
                 <circle cx="12" cy="8" r="4" stroke-width="2" stroke-linecap="round"/>
             </svg>
         </a>
+
         
     </template>
     
