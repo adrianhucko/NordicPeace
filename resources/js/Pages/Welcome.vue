@@ -25,7 +25,7 @@ defineProps({
         </div>
 
         <div class="flex flex-col">
-            <h1 class="text-white text-4xl">Hello {{name}}</h1>
+            <h1 class="text-white text-4xl">Hello {{ name }}</h1>
         </div>
 
         <div class="max-w-7xl mx-auto p-6 lg:p-8">

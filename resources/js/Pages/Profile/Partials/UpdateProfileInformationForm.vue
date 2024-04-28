@@ -83,105 +83,112 @@ const clearPhotoFileInput = () => {
 
             <template #form>
                 <!-- Profile Photo -->
-                <a href="https://wordpress.com/log-in/link?client_id=1854&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D68ffbdb6131c8380bcbe2aa5c816edcf4f4c03948dc856c99c4f208690705ee1%26redirect_uri%3Dhttps%253A%252F%252Fgravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token%26from-calypso%3D1">Change your profile photo here</a>
-                <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
+                <div v-if="$page.props.jetstream.managesProfilePhotos" class="">
                     <!-- Profile Photo File Input -->
                     <input
-                        ref="photoInput"
-                        type="file"
-                        class="hidden"
-                        @change="updatePhotoPreview"
+                    ref="photoInput"
+                    type="file"
+                    class="hidden"
+                    @change="updatePhotoPreview"
                     >
-
+                    
                     <InputLabel for="photo" value="Photo"/>
-
+                    
                     <!-- Current Profile Photo -->
                     <div v-show="! photoPreview" class="mt-2">
                         <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
                     </div>
-
+                    
                     <!-- New Profile Photo Preview -->
                     <div v-show="photoPreview" class="mt-2">
                         <span
-                            class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                            :style="'background-image: url(\'' + photoPreview + '\');'"
+                        class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
+                        :style="'background-image: url(\'' + photoPreview + '\');'"
                         />
                     </div>
-
-                    <SecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
+                    
+                    <SecondaryButton type="button" @click.prevent="selectNewPhoto">
                         Select A New Photo
                     </SecondaryButton>
-
+                    
                     <SecondaryButton
-                        v-if="user.profile_photo_path"
-                        type="button"
-                        class="mt-2"
-                        @click.prevent="deletePhoto"
+                    v-if="user.profile_photo_path"
+                    type="button"
+                    @click.prevent="deletePhoto"
                     >
-                        Remove Photo
-                    </SecondaryButton>
-
-                    <InputError :message="form.errors.photo" class="mt-2" />
+                    Remove Photo
+                </SecondaryButton>
+                
+                <InputError :message="form.errors.photo" class="mt-2" />
+            </div>
+            
+            <!-- Name -->
+            <div class="">
+                <InputLabel for="name" value="Name" />
+                <TextInput
+                id="name"
+                v-model="form.name"
+                type="text"
+                class="mt-1 block w-full"
+                required
+                autocomplete="name"
+                />
+                <InputError :message="form.errors.name" class="mt-2" />
+            </div>
+            
+            <!-- Email -->
+            <div class="">
+                <InputLabel for="email" value="Email" />
+                <TextInput
+                id="email"
+                v-model="form.email"
+                type="email"
+                class="mt-1 mb-10 block w-full"
+                required
+                autocomplete="username"
+                />
+                <InputError :message="form.errors.email" class="mt-2" />
+                
+                <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
+                    <p class="text-sm mt-2">
+                        Your email address is unverified.
+                        <Link
+                        :href="route('verification.send')"
+                        method="post"
+                        as="button"
+                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        @click.prevent="sendEmailVerification"
+                        >
+                        Click here to re-send the verification email.
+                    </Link>
+                </p>
+                
+                <div v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
+                    A new verification link has been sent to your email address.
                 </div>
+            </div>
+        </div>
 
-                <!-- Name -->
-                <div class="col-span-6 sm:col-span-4">
-                    <InputLabel for="name" value="Name" />
-                    <TextInput
-                        id="name"
-                        v-model="form.name"
-                        type="text"
-                        class="mt-1 block w-full"
-                        required
-                        autocomplete="name"
-                    />
-                    <InputError :message="form.errors.name" class="mt-2" />
-                </div>
-
-                <!-- Email -->
-                <div class="col-span-6 sm:col-span-4">
-                    <InputLabel for="email" value="Email" />
-                    <TextInput
-                        id="email"
-                        v-model="form.email"
-                        type="email"
-                        class="mt-1 block w-full"
-                        required
-                        autocomplete="username"
-                    />
-                    <InputError :message="form.errors.email" class="mt-2" />
-
-                    <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
-                        <p class="text-sm mt-2">
-                            Your email address is unverified.
-
-                            <Link
-                                :href="route('verification.send')"
-                                method="post"
-                                as="button"
-                                class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                @click.prevent="sendEmailVerification"
-                            >
-                                Click here to re-send the verification email.
-                            </Link>
-                        </p>
-
-                        <div v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
-                            A new verification link has been sent to your email address.
-                        </div>
-                    </div>
-                </div>
-            </template>
-
-            <template #actions>
-                <ActionMessage :on="form.recentlySuccessful" class="mr-3">
-                    Saved
-                </ActionMessage>
-
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Save
-                </PrimaryButton>
-            </template>
-        </FormSection>
-    </div>
+        <!-- Profile Photo Edit -->
+        <a class="flex items-center justify-between bg-teal-500 text-white shadow font-rem font-medium py-2 px-3 rounded-bo-sm hover:bg-teal-600 transition duration-100 ease-in-out" href="https://wordpress.com/log-in/link?client_id=1854&redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D68ffbdb6131c8380bcbe2aa5c816edcf4f4c03948dc856c99c4f208690705ee1%26redirect_uri%3Dhttps%253A%252F%252Fgravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token%26from-calypso%3D1">
+            Change your profile photo here
+            <svg class="w-7 stroke-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.7274 20.4471C19.2716 19.1713 18.2672 18.0439 16.8701 17.2399C15.4729 16.4358 13.7611 16 12 16C10.2389 16 8.52706 16.4358 7.12991 17.2399C5.73276 18.0439 4.72839 19.1713 4.27259 20.4471" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="12" cy="8" r="4" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </a>
+        
+    </template>
+    
+    <template #actions>
+        <ActionMessage :on="form.recentlySuccessful" class="mr-3">
+            Saved
+        </ActionMessage>
+        
+        <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            Save
+        </PrimaryButton>
+    </template>
+</FormSection>
+</div>
 </template>

@@ -1,12 +1,12 @@
 <script setup>
-    import PostHeader from '@/Components/PostHeader.vue'
-    import PostOptions from '@/Components/PostOptions.vue'
-    import PostLikes from '@/Components/PostLikes.vue'
-    import PostButtons from '@/Components/PostButtons.vue'
+import PostHeader from '@/Components/PostHeader.vue'
+import PostOptions from '@/Components/PostOptions.vue'
+import PostLikes from '@/Components/PostLikes.vue'
+import PostButtons from '@/Components/PostButtons.vue'
 
-    const props = defineProps({
-        post: Object
-    })
+const props = defineProps({
+    post: Object
+})
 </script>
 
 <template>

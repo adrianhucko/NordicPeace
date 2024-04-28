@@ -3,9 +3,9 @@ import MainLayout from '@/Layouts/MainLayout.vue';
 import UpCenter from '@/Components/UpCenter.vue'
 import PostPhoto from '@/Components/PostPhoto.vue'
 import PostStatus from '@/Components/PostStatus.vue'
-import Post2 from '@/Components/Post2.vue'
 import SuggestedPeople from '@/Components/SuggestedPeople.vue'
 import SearchBar from '@/Components/SearchBar.vue'
+import PostAdding from '@/Components/PostAdding.vue'
 
 const props = defineProps({
     'posts': Array,
@@ -17,6 +17,9 @@ const props = defineProps({
     <MainLayout>
         <template #content>
             <UpCenter></UpCenter>
+
+            <PostAdding></PostAdding>
+
             <div v-for="post in props.posts">
                 <template v-if="post.photos.length > 0">
                     <PostPhoto :post="post" />

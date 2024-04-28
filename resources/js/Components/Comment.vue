@@ -16,7 +16,7 @@
             <CommentHead :comment="comment"></CommentHead>
         </div>
         <div class="ml-[72px] -mt-3">
-            <p class="w-105 font-Man font font-light -mt-1 mb-2 ml-4">
+            <p class="w-105 font-Man font font-light -mt-1 mb-3 ml-4">
                 {{ props.comment.body }}
             </p>
             <div class="flex justify-between">
