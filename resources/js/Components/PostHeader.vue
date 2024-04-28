@@ -17,7 +17,7 @@
                 <Link :href="route('profile', props.post.user.id)">
                     <p class="text-lg text-black">{{ props.post.user.name }}</p>
                 </Link>
-                <div class="text-xs text-neutral-500">{{ props.post.created_at_for_humans }}</div>
+                <div class="text-xs text-neutral-500">{{ props.post.created_at }}</div>
             </div>
             <PostOptions></PostOptions>
         </div>

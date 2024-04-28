@@ -31,7 +31,7 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'avatar'
+        'avatar', 'followed_users_ids'
     ];
 
     /**
@@ -59,5 +59,20 @@ class User extends Authenticatable
     public function GetAvatarAttribute()
     {
         return 'https://www.gravatar.com/avatar/'.md5($this->email).'?d=mp';
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function followed_users()
+    {
+        return $this->hasMany(FollowedUser::class, 'user_id');
+    }
+
+    public function getFollowedUsersIdsAttribute()
+    {
+        return $this->followed_users->pluck('followed_user_id');
     }
 }

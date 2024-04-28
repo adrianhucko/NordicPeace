@@ -20,6 +20,8 @@
     },
     "dependencies": {
         "@headlessui/vue": "^1.7.19",
+        "@vueuse/components": "^10.9.0",
+        "@vueuse/core": "^10.9.0",
         "tailwind-scrollbar-hide": "^1.1.7"
     }
 }

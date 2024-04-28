@@ -6,10 +6,24 @@ import PostStatus from '@/Components/PostStatus.vue'
 import SuggestedPeople from '@/Components/SuggestedPeople.vue'
 import SearchBar from '@/Components/SearchBar.vue'
 import PostAdding from '@/Components/PostAdding.vue'
+import {ref} from "vue";
+import { vIntersectionObserver } from '@vueuse/components'
 
 const props = defineProps({
     'posts': Array,
 });
+
+const postShowing = ref(5)
+
+function loadMorePosts() {
+    postShowing.value += 5
+}
+
+function onIntersectionObserver([{ isIntersecting }]) {
+    if (isIntersecting) {
+        loadMorePosts()
+    }
+}
 
 </script>
 
@@ -20,7 +34,7 @@ const props = defineProps({
 
             <PostAdding></PostAdding>
 
-            <div v-for="post in props.posts">
+            <div v-for="post in props.posts.slice(0, postShowing)">
                 <template v-if="post.photos.length > 0">
                     <PostPhoto :post="post" />
                 </template>
@@ -30,6 +44,7 @@ const props = defineProps({
                 </template>
 
             </div>
+            <span v-intersection-observer="onIntersectionObserver"/>
 <!--            <PostPhoto></PostPhoto>-->
 <!--            <PostStatus></PostStatus>-->
 <!--            <Post2></Post2>-->
