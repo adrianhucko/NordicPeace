@@ -23,6 +23,8 @@
         "@vueuse/components": "^10.9.0",
         "@vueuse/core": "^10.9.0",
         "filepond": "^4.31.1",
+        "filepond-plugin-file-validate-type": "^1.2.9",
+        "filepond-plugin-image-preview": "^4.6.12",
         "tailwind-scrollbar-hide": "^1.1.7",
         "vue-filepond": "^7.0.4"
     }

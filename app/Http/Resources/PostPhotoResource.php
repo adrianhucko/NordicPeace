@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class PostPhotoResource extends JsonResource
 {
@@ -16,7 +17,7 @@ class PostPhotoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'url' => $this->url,
+            'url' => asset('storage'.$this->url),
         ];
     }
 }
