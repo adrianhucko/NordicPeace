@@ -1,17 +1,18 @@
 <script setup>
-    import PostHeader from '@/Components/PostHeader.vue'
-    import PostOptions from '@/Components/PostOptions.vue'
-    import Gallery from '@/Components/Gallery.vue'
-    import PostDescription from '@/Components/PostDescription.vue'
-    import PostLikes from '@/Components/PostLikes.vue'
-    import PostButtons from '@/Components/PostButtons.vue'
-    import CommentSection from '@/Components/CommentSection.vue'
-    import Comment from '@/Components/Comment.vue'
-    import CommentContent from '@/Components/CommentContent.vue'
+import PostHeader from '@/Components/PostHeader.vue'
+import PostOptions from '@/Components/PostOptions.vue'
+import Gallery from '@/Components/Gallery.vue'
+import PostDescription from '@/Components/PostDescription.vue'
+import PostLikes from '@/Components/PostLikes.vue'
+import PostButtons from '@/Components/PostButtons.vue'
+import CommentSection from '@/Components/CommentSection.vue'
+import Comment from '@/Components/Comment.vue'
+import CommentContent from '@/Components/CommentContent.vue'
 
-    const props = defineProps({
-        post: Object
-    })
+const props = defineProps({
+    post: Object
+})
+
 </script>
 
 <template>

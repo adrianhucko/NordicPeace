@@ -176,7 +176,8 @@ const clearPhotoFileInput = () => {
             v-model="form.bio"
             type="text"
             required
-            class="w-full resize-none scrollbar-hide p-2 mb-2 mt-2 rounded-bo bg-neutral-100 font-Man font-medium text-neutral-700 outline-none" rows="5"
+            class="w-full resize-none scrollbar-hide p-2 mb-2 mt-2 rounded-bo bg-neutral-100 font-Man font-medium text-neutral-700 outline-none" 
+            rows="5"
             />
         </div>
             
