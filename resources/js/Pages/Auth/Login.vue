@@ -33,7 +33,9 @@ const submit = () => {
     <Head title="Log in" />
 
     <AuthenticationCard class="-mt-14">
-        <Logo class="mb-6"></Logo>
+        <div class="flex items-center justify-center mb-10">
+            <Logo></Logo> 
+        </div>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
@@ -82,6 +84,10 @@ const submit = () => {
             
                 <Link v-if="canResetPassword" :href="route('password.request')" class="mt-5 px-2 py-1 font-rem text-md rounded-full text-gray-600 hover:text-neutral-950 focus:outline-none transition duration-150 ease-in-out">
                     Forgot your password?
+                </Link>
+
+                <Link :href="route('register')" class="mt-2 px-6 py-1 font-rem text-md rounded-full text-gray-600 hover:text-neutral-950 focus:outline-none transition duration-150 ease-in-out">
+                    Create account here
                 </Link>
             </div>
 

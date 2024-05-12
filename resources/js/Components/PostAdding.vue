@@ -65,6 +65,7 @@ function removePhoto(error, file) {
                 @processfile="addPhoto"
                 @removefile="removePhoto"
             />
+            <label class="flex justify-end -mt-4 mb-2 text-s" for="">Maximum size 2 MB</label>
 
             <div class="flex items-center justify-end">
                 <AddPhotoButton class="mr-[1px] -mb-[8px]"></AddPhotoButton>

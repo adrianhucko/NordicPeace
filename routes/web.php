@@ -27,10 +27,10 @@ Route::middleware(['auth'])->group(function () {
     // Unfollow user
     Route::post('/followed-users/unfollow', [FollowedUserController::class, 'unfollow'])->name('followed-users.unfollow');
 
-    // Settings
-//    Route::get('/settings', function() {        //working
-//        return Inertia::render('Settings');
-//    });
+        // Settings
+    //    Route::get('/settings', function() {        //working
+    //        return Inertia::render('Settings');
+    //    });
 
 });
 

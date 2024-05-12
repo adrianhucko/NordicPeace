@@ -45,9 +45,7 @@ function onIntersectionObserver([{ isIntersecting }]) {
 
             </div>
             <span v-intersection-observer="onIntersectionObserver"/>
-<!--            <PostPhoto></PostPhoto>-->
-<!--            <PostStatus></PostStatus>-->
-<!--            <Post2></Post2>-->
+
         </template>
 
         <template #suggestions>

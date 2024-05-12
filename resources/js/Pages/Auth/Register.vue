@@ -26,7 +26,9 @@ const submit = () => {
 <template>
     <Head title="Register" />
     <AuthenticationCard>
-        <Logo class="mb-6"></Logo>
+        <div class="flex items-center justify-center mb-10">
+            <Logo></Logo>
+        </div>
 
         <form @submit.prevent="submit">
             <div>
